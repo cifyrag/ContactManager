@@ -1,0 +1,48 @@
+﻿@model ContactManager.Models.Contact
+
+<h4>Contact Information</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditContactPut">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Phone" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input class="form-check-input" asp-for="Married" />
+                <label class="form-check-label" asp-for="Married">@Html.DisplayNameFor(model => model.Married)</label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            
+            <div class="mt-3">
+                <input type="submit" value="Save" class="btn btn-primary btn-sm btn-block" />
+                <a asp-action="Index" class="btn btn-secondary btn-sm btn-block">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ 
+        await Html.RenderPartialAsync("_ValidationScriptsPartial"); 
+    }
+}
